@@ -6,7 +6,7 @@
             <h1>Projects</h1>
             <div>
                 <a href="{{ route('admin.projects.create') }}">
-                    <button class="btn btn-primary">Add new project</button>
+                    <button class="btn btn-primary rounded-circle"><i class="fa-solid fa-plus"></i></button>
                 </a>
             </div>
         </div>
@@ -29,8 +29,8 @@
                         <td>{{ $item->owner }}</td>
                         <td>{{ $item->description }}</td>
                         <td class="text-nowrap">
-                            <a href=""><button class="btn btn-warning text-white">Edit</button></a>
-                            <a href=""><button class="btn btn-danger">Delete</button></a>
+                            <a href=""><button class="btn btn-warning text-white"><i class="fa-solid fa-pen"></i></i></button></a>
+                            <a href=""><button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                         </td>
                     </tr>
                 @endforeach

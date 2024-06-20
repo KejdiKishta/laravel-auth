@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -34,6 +35,7 @@ class ProjectController extends Controller
         $data = $request->all();
         $project = new Project();
         $project->fill($data);
+        $project->slug = Str::slug($project->title);
         $project->save();
 
         return redirect()->route('admin.projects.index');

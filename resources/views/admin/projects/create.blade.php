@@ -34,15 +34,6 @@
                 @enderror
             </div>
 
-            <div class="form-group py-3">
-                <label for="slug">Slug</label>
-                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-                    value="{{ old('slug') }}">
-                @error('slug')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
