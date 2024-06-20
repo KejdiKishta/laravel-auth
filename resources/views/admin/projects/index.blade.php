@@ -4,6 +4,13 @@
     <div class="container p-5">
         <div class="d-flex justify-content-between mb-5">
             <h1>Projects</h1>
+
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+
             <div>
                 <a href="{{ route('admin.projects.create') }}">
                     <button class="btn btn-primary rounded-circle"><i class="fa-solid fa-plus"></i></button>
@@ -23,15 +30,29 @@
             </thead>
             <tbody>
                 @foreach ($projects as $item)
-                    <tr>
-                        <th scope="row">{{ $item->id }}</th>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->owner }}</td>
-                        <td>{{ $item->description }}</td>
-                        <td class="text-nowrap">
-                            <a href="{{ route('admin.projects.edit', ['project'=>$item->slug]) }}"><button class="btn btn-warning text-white"><i class="fa-solid fa-pen"></i></button></a>
-                            <a href=""><button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
-                        </td>
+                    <tr class="ms_click" data-href="{{ route('admin.projects.show', ['project' => $item->slug]) }}">
+                        {{-- <a href="{{ route('admin.projects.show', ['project' => $item->slug]) }}"> --}}
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->owner }}</td>
+                            <td>{{ $item->description }}</td>
+                            <td class="text-nowrap">
+                                <a class="d-inline-block" href="{{ route('admin.projects.edit', ['project' => $item->slug]) }}">
+                                    <button class="btn btn-warning text-white">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                </a>
+
+                                <form class="d-inline-block" action="{{ route('admin.projects.destroy', ['project' => $item->slug]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        {{-- </a> --}}
                     </tr>
                 @endforeach
             </tbody>
