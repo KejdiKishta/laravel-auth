@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container p-5">
         <h1>Create a new project</h1>
 
         <form action="{{ route('admin.projects.store') }}" method="POST">

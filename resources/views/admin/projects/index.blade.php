@@ -29,7 +29,7 @@
                         <td>{{ $item->owner }}</td>
                         <td>{{ $item->description }}</td>
                         <td class="text-nowrap">
-                            <a href=""><button class="btn btn-warning text-white"><i class="fa-solid fa-pen"></i></i></button></a>
+                            <a href="{{ route('admin.projects.edit', ['project'=>$item->slug]) }}"><button class="btn btn-warning text-white"><i class="fa-solid fa-pen"></i></button></a>
                             <a href=""><button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                         </td>
                     </tr>
